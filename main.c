@@ -1,5 +1,5 @@
 #include "monty.h"
-
+//*checks if the content is not NULL and uses handleError if it is*/
 void processMontyContent(const char *fileContent) {
     if (!fileContent)
         handleError(2, "NULL");
@@ -20,7 +20,7 @@ void processMontyContent(const char *fileContent) {
 
     free(currentLine);
 }
-
+/*checks if the line is not NULL and uses handleError if it is*/
 int parseMontyLine(char *line, int lineNumber, int currentFormat) {
     char *currentOpcode, *currentValue;
     const char *delimiter = " ";
@@ -42,7 +42,7 @@ int parseMontyLine(char *line, int lineNumber, int currentFormat) {
     findMontyInstruction(currentOpcode, currentValue, lineNumber, currentFormat);
     return currentFormat;
 }
-
+/*checks if the opcode starts with '#' and returns if true (ignoring comments)*/
 void findMontyInstruction(char *currentOpcode, char *currentValue, int lineNumber, int currentFormat) {
     MontyInstruction montyInstructions[] = { ... };
 
@@ -58,7 +58,9 @@ void findMontyInstruction(char *currentOpcode, char *currentValue, int lineNumbe
 
     handleError(3, lineNumber, currentOpcode);
 }
-
+/*It specifically handles the "push" instruction, checking for valid values and creating nodes accordingly. 
+It then calls the appropriate function with the provided parameters. 
+If the opcode is not "push," it calls the function directly with the global head and line number.*/
 void executeMontyFunction(MontyFunction function, char *op, char *val, int ln, int currentFormat) {
     if (strcmp(op, "push") == 0) {
         if (!val || (val[0] == '-' && !isdigit(val[1])))
