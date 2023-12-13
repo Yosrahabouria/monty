@@ -38,4 +38,10 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/** Error fucntions **/
+void printErrorMessage(int errorCode, const char *messageFormat, ...);
+void handleGeneralError(int errorCode, ...);
+void handleMoreError(int errorCode, ...);
+void handleStringError(int errorCode, ...);
+
 #endif /* MONTY_H */
