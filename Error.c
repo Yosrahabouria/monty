@@ -1,12 +1,12 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
-
+/*function exit Failure*/
 void handleExitFailure() {
     free_nodes();
     exit(EXIT_FAILURE);
 }
-
+/*function to print error message */
 void printErrorMessage(int errorCode, const char *messageFormat, ...) {
     va_list args;
     va_start(args, messageFormat);
@@ -16,7 +16,7 @@ void printErrorMessage(int errorCode, const char *messageFormat, ...) {
     va_end(args);
     handleExitFailure();
 }
-
+/*handle general error*/
 void handleGeneralError(int errorCode, ...) {
     va_list args;
     va_start(args, errorCode);
@@ -46,7 +46,7 @@ void handleGeneralError(int errorCode, ...) {
 
     va_end(args);
 }
-
+/*handle More Error*/
 void handleMoreError(int errorCode, ...) {
     va_list args;
     va_start(args, errorCode);
@@ -73,7 +73,7 @@ void handleMoreError(int errorCode, ...) {
 
     va_end(args);
 }
-
+/*line number error*/
 void handleStringError(int errorCode, ...) {
     va_list args;
     va_start(args, errorCode);
