@@ -38,14 +38,4 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/** Error fucntions **/
-void printErrorMessage(int errorCode, const char *messageFormat, ...);
-void handleGeneralError(int errorCode, ...);
-void handleMoreError(int errorCode, ...);
-void handleStringError(int errorCode, ...);
-/** Monty functions *//
-void processMontyContent(const char *fileContent);
-int parseMontyLine(char *line, int lineNumber, int currentFormat);
-void findMontyInstruction(char *currentOpcode, char *currentValue, int lineNumber, int currentFormat);
-void executeMontyFunction(MontyFunction function, char *op, char *val, int ln, int currentFormat);
 #endif /* MONTY_H */
